@@ -13,4 +13,7 @@ echo aws_secret_access_key = $"$AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
 echo $t
 echo "ACCESS KEY ID"
 cat ~/.aws/credentials
-kubectl rollout restart deployment $1 --kubeconfig ~/.kube/config
+for var in "$@"
+do
+    kubectl rollout restart deployment $var --kubeconfig ~/.kube/config
+done
